@@ -116,6 +116,7 @@ function getDexText(species) {
   }
 }
 init2();
+
 async function init2() {
   try {
     let response = await fetch(
@@ -130,10 +131,15 @@ async function init2() {
       let species = await loadPokemonSpecies(pokemon.id);
       let dexText = getDexText(species);
       let container = document.getElementById(`pokemonTest`);
+
+         
+         
+
       if (!container) continue;
 
       container.innerHTML += renderPokemons2(pokemon, dexText);
     }
+    
   } catch (error) {
     console.error(error);
   }
@@ -167,22 +173,10 @@ function renderPokemons2(pokemon, dexText) {
                      
                       </div>
                       <div class="Abilities">Stats   </div>
-                      <div class="abili-wrapper"
-                      <p>HP</p>
-
-                        <p>ATK</p>
-
-                          <p>DEF</p>
-
-                            <p>SpA</p>
-
-                              <p>SpD</p>
-
-                                <p>SPD</p>
-
-                                  <p>TOT</p>
-
-                                  </div>
+                      
+                                  <div class="stats-wrapper">
+        ${statsTemplate(pokemon)}
+      </div>
 <div class="Abilities">Evolution   </div>
                  </div>
                 </div>
@@ -196,8 +190,29 @@ function pokemonAbilities(pokemon) {
     let typeName = pokemon.abilities[i].ability.name;
 
     html += ` <div class="types-row">
-<span class="abili ${typeName}">${typeName}</span> </div>`;
+<span class="abili ${typeName}"></span> </div>`;
   }
 
   return html;
+}
+
+
+
+function statsTemplate (pokemon){
+  let html =""
+    for (let i = 0; i < pokemon.stats.length; i++) {
+    const statName = pokemon.stats[i].stat.name;   
+    const base = pokemon.stats[i].base_stat;      
+
+    html += `
+    <div class="stats-wrapper">
+      <div class="stat-row">  
+        <span class="stat-name">${statName}</span>
+        <span class="stat-value">${base}</span>
+      </div>
+      </div>
+    `;
+  }
+  return html
+
 }
