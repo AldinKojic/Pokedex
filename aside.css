@@ -1,0 +1,15 @@
+.basket{
+  width: 360px;        
+  flex: 0 0 560px;
+      background-color: #363534;
+       height:auto;
+}
+
+
+
+
+
+.wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+}
