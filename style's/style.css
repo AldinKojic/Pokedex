@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+}
+
+body {
+  height: 100vh;
+}
+
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 180px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 64px 18px 18px;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 20px;
+   cursor: pointer;
+  border: none;
+}
+
+.pokemonID {
+  margin-top: -20px;
+  margin-bottom: 10px;
+  color: #969595;
+}
+
+.test {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  gap: 100px;
+}
+
+.poke-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokemon-sprite {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+}
+
+.types-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer {
+  color: white;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  background-color:#1E1E1E;
+}
+
+
+.input-wrapper {
+  display: flex;
+ justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.input {
+  width: 500px;
+
+  height: 70px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border: 0;
+  border-radius: 8px;
+}
+.input::placeholder {
+padding-left: 10px;
+}
+
+.search-input {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.search-input button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+
+  width: 36px;
+  height: 36px;
+
+  transform: translateY(-50%);
+
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn input {
+  padding-right: 52px;
+}
+.search-btn {
+  height: 30px;
+  width: 30px;
+  background-color: red;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.search-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(204, 122, 59, 0.7); 
+}
+
+.test{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

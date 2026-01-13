@@ -1,0 +1,134 @@
+.pokemon-detail-card {
+ display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    padding: 64px 18px 18px;
+    text-align: center;
+    margin-top: 100px; 
+    border-radius: 18px;
+  margin-right: 5px;
+}
+
+
+ .pokemon-detail-sprite {
+position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 270px;
+    height: 270px;
+    image-rendering: pixelated;
+}
+
+.pokemon-detail-id {
+  margin-top: -20px;
+  margin-bottom: 10px;
+    color:   #969595;;
+}
+
+.pokemon-type-list {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pokedex-entry {
+  font-weight: 400;
+  margin-top: 20px;
+  font-size: 20px;
+    color:   #969595;;
+}
+
+.height-weight-title {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-size: 20px;
+      font-weight: bold;
+}
+
+.height-weight {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-size: 20px;
+    
+}
+
+
+.detail-section-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 20px;
+      font-weight: bold;
+}
+.detail-section-stats{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+   font-size: 20px;
+       margin-top: 20px;
+
+}
+  .pokemon-ability-list{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+  font-size: 20px;
+   
+}
+
+
+.abili-wrapper{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 20px  ;
+}
+
+.stats-wrapper{
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  margin-top: 10px;
+  
+}
+
+.stat-row{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-name{
+  gap: 20px;
+  background-color: #efefef;
+}
+
+.stat-value{
+  background-color: #efefef;
+  border-radius:8px;
+}
+
+.pokemon-name{
+  font-weight: bold;
+  font-size: 30px;
+}
+.pokemon-name-template{
+    font-weight: bold;
+font-size: 20px;
+}
+
+.stat-badge{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefef;
+  border-radius: 8px;
+  padding: 10px;
+  width: 250px;
+}

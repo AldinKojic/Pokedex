@@ -1,13 +1,16 @@
 .btec {
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: 8px;
   font-weight: 700;
-  font-size: 12px;
+ 
   background: #eee;
+      
 }
 
 .types-row {
   margin-top: 10px;
+  
+
 }
 
 .type-normal {
@@ -17,7 +20,7 @@
   background: #ee8130;
 }
 .type-water {
-  background: #6390f0;
+  background: #91b0f3;
 }
 .type-electric {
   background: #f7d02c;
@@ -38,7 +41,7 @@
   background: #e2bf65;
 }
 .type-flying {
-  background: #a98ff3;
+  background: #91b0f3;
 }
 .type-psychic {
   background: #f95587;
