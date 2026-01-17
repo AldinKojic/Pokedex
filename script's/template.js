@@ -1,9 +1,13 @@
 function renderPokemons(pokemon) {
+  let imgSrc = showNormalSprites
+    ? pokemon.sprites.front_default
+    : pokemon.sprites.other["official-artwork"].front_default;
+
   return `
     <button class="pokemon-card" onclick="showPokemonDetailById(${pokemon.id})">
-      <img class="pokemon-sprite" src="${pokemon.sprites.front_default}">
+      <img class="pokemon-sprite"  id="sprite-${pokemon.id}" src="${imgSrc}">
       <p class="pokemonID">N°${pokemon.id}</p>
-      <p class="pokemon-name-template">${pokemon.name}</p>
+      <p class="pokemon-name-template">${capitalizeFirstLetter(pokemon.name)}</p>
       <div class="types-row">
         ${pokemonTypes(pokemon)}
       </div>
@@ -34,7 +38,7 @@ function pokemonAbilities(pokemon) {
       break;
     }
     html += ` <div class="types-row">
-<span class="pokemon-ability-list"> <p class="stat-badge">${typeName}</p></span> </div>
+<span class="pokemon-ability-list"> <p class="stat-badge">${capitalizeFirstLetter(typeName)}</p></span> </div>
 `;
   }
 
@@ -70,19 +74,37 @@ function renderPokemonDetail(pokemon, dexText) {
                    </div>
                                  ${renderPokemonProfile(pokemon, dexText)}
                                  ${renderPokemonCombatStats(pokemon)}
-                    <div class="detail-section-title">Evolution</div>
+                    <div class="detail-section-title">Pokémon Sound</div>
+                    <audio id="pokemonAudio" controls></audio>
+
            </div>
        </div>
                `;
+           
 }
 
 function renderPokemonHeader(pokemon) {
+    let imgSrc = showNormalSprites
+    ? pokemon.sprites.front_default
+    : pokemon.sprites.other["official-artwork"].front_default;
+
   return `
-     <img class="pokemon-detail-sprite " src="${pokemon.sprites.front_default}">
-                  <p class="pokemon-detail-id ">N°${pokemon.id}</p>
-                  <p class="pokemon-name">${pokemon.name}</p>
-                  `;
+  <div class="sprite-center">
+    <img
+      class="pokemon-detail-sprite pixelated "
+    
+      id="detailSprite"
+      src="${imgSrc}"
+      data-artwork="${pokemon.sprites.other["official-artwork"].front_default}"
+      data-normal="${pokemon.sprites.front_default}"
+      data-shiny="${pokemon.sprites.front_shiny}"
+    >
+    <p class="pokemon-detail-id">N°${pokemon.id}</p>
+    <p class="pokemon-name">${capitalizeFirstLetter(pokemon.name)}</p>
+    </div>
+  `;
 }
+
 
 function renderPokemonProfile(pokemon, dexText) {
   return `
@@ -108,6 +130,78 @@ function renderPokemonCombatStats(pokemon) {
                       <div class="stats-wrapper">
                                 ${pokemonStats(pokemon)}
                         </div>
-    
+   
     `;
+}
+
+
+function toggleAllSprites() {
+  showNormalSprites = !showNormalSprites;
+
+  renderAllPokemons();
+
+  const detailImg = document.getElementById("detailSprite");
+  if (!detailImg) return;
+
+ 
+  detailImg.src = showNormalSprites
+    ? detailImg.dataset.normal
+    : detailImg.dataset.artwork;
+
+ 
+  if (showNormalSprites) {
+    detailImg.classList.add("pixelated");
+  } else {
+    detailImg.classList.remove("pixelated");
+  }
+}
+
+function toggleShiny() {
+  showNormalSprites = !showNormalSprites;
+
+  renderAllPokemons();
+
+  const detailImg = document.getElementById("detailSprite");
+  if (!detailImg) return;
+  detailImg.src = showNormalSprites
+    ? detailImg.dataset.artwork
+    : detailImg.dataset.shiny;
+
+
+}
+function renderAllPokemons() {
+  let container = document.getElementById("pokemon");
+  container.innerHTML = "";
+
+  for (let i = 0; i < allPokemons.length; i++) {
+    container.innerHTML += renderPokemons(allPokemons[i], i);
+  }
+}
+function prepareAudioByPokemon(pokemon) {
+  const audio = document.getElementById("pokemonAudio");
+  const detailSprite = document.getElementById("detailSprite");
+
+  
+  const listSprite = document.getElementById(`sprite-${pokemon.id}`);
+
+  if (!audio || !detailSprite) return;
+  if (!pokemon?.cries?.latest) return;
+
+  audio.src = pokemon.cries.latest;
+  audio.volume = 0.1;
+
+  audio.onplay = () => {
+    detailSprite.classList.add("shake");
+    if (listSprite) listSprite.classList.add("shake");  
+  };
+
+  audio.onpause = () => {
+    detailSprite.classList.remove("shake");
+    if (listSprite) listSprite.classList.remove("shake");
+  };
+
+  audio.onended = () => {
+    detailSprite.classList.remove("shake");
+    if (listSprite) listSprite.classList.remove("shake");
+  };
 }

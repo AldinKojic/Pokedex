@@ -26,6 +26,7 @@ body {
   margin-left: 20px;
    cursor: pointer;
   border: none;
+  align-items: center;
 }
 
 .pokemonID {
@@ -49,11 +50,9 @@ body {
 .pokemon-sprite {
   position: absolute;
   top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
   width: 96px;
   height: 96px;
-  image-rendering: pixelated;
+
 }
 
 .types-row {
